@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZozoApp.Views;
 
 namespace ZozoApp
 {
@@ -10,7 +11,7 @@ namespace ZozoApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SignUpPage();
         }
 
         protected override void OnStart()

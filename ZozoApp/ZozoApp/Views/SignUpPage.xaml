@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ZozoApp.Views.SignUpPage"
+             BackgroundColor="#1B1B1B"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Margin="25">
+                <Label TextColor="#FFF"
+                       Text="The Zozo App"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       Margin="30,0,30,0" />
+                <Frame HasShadow="True"
+                       Padding="25"
+                       Margin="0,30,0,0"
+                       BackgroundColor="#222">
+                    <StackLayout BackgroundColor="Transparent">
+                        <Label Text="Create An Account"
+                               FontAttributes="Bold"
+                               FontSize="Title"
+                               HorizontalOptions="Center"
+                               TextColor="#FFF" />
+                        <Entry Placeholder="Full Name"
+                               PlaceholderColor="#80574D"
+                               TextColor="#FFF"
+                               x:Name="EntName"
+                               Keyboard="Text"
+                               BackgroundColor="Transparent"
+                               />
+                        <Entry Placeholder="Email"
+                               PlaceholderColor="#80574D"
+                               TextColor="#FFF"
+                               x:Name="EntEmail"
+                               Keyboard="Email"
+                               BackgroundColor="Transparent"/>
+                        <Entry Placeholder="Password"
+                               PlaceholderColor="#80574D"
+                               TextColor="#FFF"
+                               IsPassword="True"
+                               x:Name="EntPassword"
+                               BackgroundColor="#222"
+                               Keyboard="Default"
+                               />
+                        <Entry Placeholder="Confirm Password"
+                               PlaceholderColor="#80574D"
+                               TextColor="#80574D"
+                               IsPassword="True"
+                               x:Name="EntConfirmPassword"
+                               Keyboard="Default"
+                               BackgroundColor="Transparent"/>
+                        <Label Margin="20,0,20,0"
+                               FontSize="Small"
+                               HorizontalTextAlignment="Center"
+                               TextColor="#fff"
+                               Text="By creating an account you agree to our Terms of Service and Privacy Policy" />
+                    </StackLayout>
+                </Frame>
+                <Button Text="CONTINUE"
+                        TextColor="White"
+                        BackgroundColor="#222"
+                        x:Name="BtnSignUp"
+                        CornerRadius="30"/>
+                <Label Text="Already have an account?"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#80574D" />
+                <Button Text="Login"
+                        Padding="none"
+                        BackgroundColor="#222"
+                        TextColor="White"
+                        x:Name="BtnLogin" 
+                        CornerRadius="30" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

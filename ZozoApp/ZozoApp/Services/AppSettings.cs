@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ZozoApp.Services
 {
-   public class ApiSettings
+   public class AppSettings
     {
+        public static string ApiUrl = "http://localhost:49887/";
     }
 }
