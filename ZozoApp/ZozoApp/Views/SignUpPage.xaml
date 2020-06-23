@@ -19,8 +19,9 @@
                        Margin="30,0,30,0" />
                 <Frame HasShadow="True"
                        Padding="25"
-                       Margin="0,30,0,0"
-                       BackgroundColor="#222">
+                       Margin="0,20,0,0"
+                       BackgroundColor="#222"
+                       CornerRadius="10">
                     <StackLayout BackgroundColor="Transparent">
                         <Label Text="Create An Account"
                                FontAttributes="Bold"
@@ -55,7 +56,7 @@
                                x:Name="EntConfirmPassword"
                                Keyboard="Default"
                                BackgroundColor="Transparent"/>
-                        <Label Margin="20,0,20,0"
+                        <Label 
                                FontSize="Small"
                                HorizontalTextAlignment="Center"
                                TextColor="#fff"
@@ -66,16 +67,16 @@
                         TextColor="White"
                         BackgroundColor="#222"
                         x:Name="BtnSignUp"
-                        CornerRadius="30"/>
+                        Clicked="BtnSignUp_Clicked"
+                        CornerRadius="10"/>
                 <Label Text="Already have an account?"
                        HorizontalTextAlignment="Center"
                        TextColor="#80574D" />
                 <Button Text="Login"
-                        Padding="none"
                         BackgroundColor="#222"
                         TextColor="White"
                         x:Name="BtnLogin" 
-                        CornerRadius="30" />
+                        CornerRadius="10" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
