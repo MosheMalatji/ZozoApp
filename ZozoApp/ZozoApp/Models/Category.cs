@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ZozoApp.Services;
 
 namespace ZozoApp.Models
 {
@@ -9,5 +10,7 @@ namespace ZozoApp.Models
         public int id { get; set; }
         public string name { get; set; }
         public string imageUrl { get; set; }
+        public string FullImageUrl => AppSettings.ApiUrl + imageUrl;
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZozoApp.Services
+namespace ZozoApp
 {
    public class AppSettings
     {

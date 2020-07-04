@@ -10,5 +10,7 @@ namespace ZozoApp.Models
         public string name { get; set; }
         public double prie { get; set; }
         public string imageUrl { get; set; }
+        public string FullImageUrl => AppSettings.ApiUrl + imageUrl;
+
     }
 }

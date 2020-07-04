@@ -10,6 +10,8 @@ namespace ZozoApp.Models
         public string name {get; set;}
         public string detail { get; set; }
         public string imageUrl { get; set; }
+        public string FullImageUrl => AppSettings.ApiUrl + imageUrl;
+
         public double price { get; set; }
         public bool isPopularProduct { get; set; }
         public int categoryId { get; set; }
