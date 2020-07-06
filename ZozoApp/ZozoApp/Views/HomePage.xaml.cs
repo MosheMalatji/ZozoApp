@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,15 @@ namespace ZozoApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        public ObservableCollection<PopularProduct> ProductsCollection;
+        public ObservableCollection<Category> CategoriesCollection;
+
         public HomePage()
         {
             InitializeComponent();
-            //ProductsCollection = new ObservableCollection<PopularProduct>();
-            //CategoriesCollection = new ObservableCollection<Category>();
+            ProductsCollection = new ObservableCollection<PopularProduct>();
+            ProductsCollection = new ObservableCollection<PopularProduct>();
+            CategoriesCollection = new ObservableCollection<Category>();
             GetPopularProducts();
             GetCategories();
             LblUserName.Text = Preferences.Get("userName", string.Empty);
@@ -26,22 +31,22 @@ namespace ZozoApp.Views
 
         private async void GetCategories()
         {
-           // var categories = await ApiServices.GetCategories();
-            //foreach (var category in categories)
-            //{
-              //  CategoriesCollection.Add(category);
-            //}
-            //CvCategories.ItemsSource = CategoriesCollection;
+          var categories = await ApiServices.GetCategories();
+           foreach (var category in categories)
+            {
+             CategoriesCollection.Add(category);
+            }
+            CvCategories.ItemsSource = CategoriesCollection;
         }
 
         private async void GetPopularProducts()
         {
-          //  var products = await ApiServices.GetPopularProduct();
-            //foreach (var product in products)
-            //{
-              // ProductsCollection.Add(product);
-            //}
-          //  CvProducts.ItemsSource = ProductsCollection;
+            var products = await ApiServices.GetPopularProduct();
+            foreach (var product in products)
+            {
+               ProductsCollection.Add(product);
+            }
+          CvProducts.ItemsSource = ProductsCollection;
         }
 
         private async void ImgMenu_Tapped(object sender, EventArgs e)
@@ -58,8 +63,8 @@ namespace ZozoApp.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-          //  var response = await ApiServices.GetTotalCartItems(Preferences.Get("userId", 0));
-           // LblTotalItems.Text = response.totalItems.ToString();
+          var response = await ApiServices.GetTotalCartItems(Preferences.Get("userId", 0));
+           LblTotalItems.Text = response.totalItems.ToString();
         }
 
         protected override void OnDisappearing()
@@ -79,7 +84,7 @@ namespace ZozoApp.Views
         {
             var currentSelection = e.CurrentSelection.FirstOrDefault() as Category;
             if (currentSelection == null) return;
-           // Navigation.PushModalAsync(new ProductListPage(currentSelection.id, currentSelection.name));
+            Navigation.PushModalAsync(new ProductListPage(currentSelection.id, currentSelection.name));
             ((CollectionView)sender).SelectedItem = null;
         }
 
@@ -87,35 +92,35 @@ namespace ZozoApp.Views
         {
             var currectSelection = e.CurrentSelection.FirstOrDefault() as PopularProduct;
             if (currectSelection == null) return;
-           // Navigation.PushModalAsync(new ProductDetailPage(currectSelection.id));
+           Navigation.PushModalAsync(new ProductDetailPage(currectSelection.id));
             ((CollectionView)sender).SelectedItem = null;
         }
 
         private void TapCartIcon_Tapped(object sender, EventArgs e)
         {
-           // Navigation.PushModalAsync(new CartPage());
+          Navigation.PushModalAsync(new CartPage());
         }
 
         private void TapOrders_Tapped(object sender, EventArgs e)
         {
-           // Navigation.PushModalAsync(new OrdersPage());
+           Navigation.PushModalAsync(new OrdersPage());
         }
 
         private void TapContact_Tapped(object sender, EventArgs e)
         {
-          //  Navigation.PushModalAsync(new ContactPage());
+                Navigation.PushModalAsync(new ContactPage());
         }
 
         private void TapCart_Tapped(object sender, EventArgs e)
         {
-          //  Navigation.PushModalAsync(new CartPage());
+            Navigation.PushModalAsync(new CartPage());
         }
 
         private void TapLogout_Tapped(object sender, EventArgs e)
         {
             Preferences.Set("accessToken", string.Empty);
             Preferences.Set("tokenExpirationTime", 0);
-           // Application.Current.MainPage = new NavigationPage(new SignupPage());
+            Application.Current.MainPage = new NavigationPage(new SignUpPage());
         }
     }
 }
